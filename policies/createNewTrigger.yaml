@@ -1,0 +1,11 @@
+ name: addNewTrigger.concurrency
+ description: Limits the concurrent executions for ratelimiter.addNewTrigger.
+ enabled: true
+ resource_ref: ratelimiter.addNewTrigger
+ policy_type: action.concurrency.attr
+ parameters:
+     action: delay
+     threshold: 1
+     attributes:
+         - host
+         - servicedesc
