@@ -17,7 +17,7 @@ tasks:
     next:
       - when: <% succeeded() and result().count < ctx(max_tries) %>
         publish:
-        - count: <% ctx(count) %>
+        - count: <% result(count) %>
         do: addExecution
       - when: <% succeeded() %>
   addExecution:
@@ -33,9 +33,9 @@ tasks:
     action: core.inject_trigger
     input:
       trigger: ratelimiter.ratelimited
-    payload:
-      data: <% ctx(data) %>
-      count: <% ctx(count) %>
+      payload:
+        data: <% ctx(data) %>
+        count: <% ctx(count) %>
     next:
       - when: <% succeeded() %>
       - when: <% failed() %>
