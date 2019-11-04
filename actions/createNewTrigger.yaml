@@ -14,7 +14,7 @@ parameters:
     type: string
   time:
     required: true
-    type: number
+    type: string
   data:
     required: true
     type: object

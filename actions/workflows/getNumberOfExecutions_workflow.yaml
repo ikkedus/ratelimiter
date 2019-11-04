@@ -17,7 +17,7 @@ tasks:
     next:
       - when: <% succeeded() %>
         publish:
-        - count: <% ctx(executions) %>
+        - count: <% result().result.executions %>
       - when: <% failed() %>
         do: 
          - fail
