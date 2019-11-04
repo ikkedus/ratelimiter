@@ -11,8 +11,8 @@ tasks:
   getExecutions:
     action: ratelimiter.getNumberOfExecutions
     input:
-      host: <% ctx (host) %>
-      service_desc: <% ctx (service_desc) %>
+      host: <% ctx(host) %>
+      service_desc: <% ctx(service_desc) %>
       time: <% ctx(time) %>
     next:
       - when: <% succeeded() and result().count < ctx(max_tries) %>
@@ -27,7 +27,7 @@ tasks:
       service_desc: <% ctx(service_desc) %>
       data: <% ctx(data) %>
     next:
-      - when: <% succeded() %>
+      - when: <% succeeded() %>
         do: createTrigger
   createTrigger:
     action: core.inject_trigger
