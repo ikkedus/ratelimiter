@@ -1,0 +1,20 @@
+---
+name: "createNewTrigger"
+pack: ratelimiter
+description: "This gets the number of executions of a action on a host since a given date then determens if a new trigger should be made"
+runner_type: orquesta
+entry_point: workflows/createNewTrigger_workflow.yaml
+enabled: true
+parameters:
+  host:
+    required: true
+    type: string
+  action:
+    required: true
+    type: string
+  date:
+    required: true
+    type: string
+  data:
+    required: true
+    type: object

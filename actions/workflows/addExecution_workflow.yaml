@@ -4,7 +4,7 @@ description: This gets the nunber of executions of a action on a host.
 input:
   - host
   - service_desc
-  - data
+  - date
 tasks:
   getNumberOfExecutions:
     action: sql.insert
@@ -15,7 +15,7 @@ tasks:
       data:
         hostname: '<% ctx(host) %>'
         service_desc: '<% ctx(service_desc) %>'
-        data: '<% ctx(data) %>'
+        data: '<% ctx(date) %>'
     next:
       - when: <% succeeded() %>
         publish:

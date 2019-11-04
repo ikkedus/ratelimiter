@@ -1,6 +1,6 @@
 ---
 name: "addExecution"
-pack: ratelimit
+pack: ratelimiter
 description: "this adds a execution to the executions table"
 runner_type: orquesta
 entry_point: workflows/addExecution_workflow.yaml
