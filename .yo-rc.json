@@ -1,0 +1,38 @@
+{
+  "generator-st2pack": {
+    "promptValues": {
+      "features": [
+        "Rules"
+      ],
+      "pack_ref": "ratelimiter",
+      "pack_name": "ratelimiter",
+      "pack_desc": "This is a ratelimiter"
+    },
+    "actions": {},
+    "aliases": {},
+    "rules": {
+      "on_hello_event1": {
+        "name": "on_hello_event1",
+        "pack": "ratelimiter",
+        "description": "Sample rule firing on ratelimiter.event1.",
+        "enabled": true,
+        "trigger": {
+          "type": "ratelimiter.event1"
+        },
+        "action": {
+          "ref": "ratelimiter.greet",
+          "parameters": {
+            "greeting": "Yo"
+          }
+        }
+      }
+    },
+    "sensors": {},
+    "policies": {},
+    "pack": {
+      "ref": "ratelimiter",
+      "name": "ratelimiter",
+      "description": "This is a ratelimiter"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+---
+name: on_hello_event1
+pack: ratelimiter
+description: Sample rule firing on ratelimiter.event1.
+enabled: true
+trigger:
+    type: ratelimiter.event1
+action:
+    ref: ratelimiter.greet
+    parameters:
+        greeting: Yo
