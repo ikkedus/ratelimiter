@@ -6,7 +6,7 @@ description: "this makes a trigger with a data object with a number of triggers,
 trigger:
   type: "magicarp.service_state_change"
 
-criteria:
+criteria: {}
 
 action:
   ref: "ratelimiter.createNewTrigger"
