@@ -6,7 +6,7 @@ input:
   - service_desc
   - date
   - data
-
+  - max_tries
 tasks:
   getExecutions:
     action: ratelimiter.getNumberOfExecutions
@@ -14,10 +14,11 @@ tasks:
       host: <% ctx (host) %>
       service_desc: <% ctx (service_desc) %>
     next:
-      - when: <% succeeded() %>
+      - when: <% succeeded() and result().count < ctx(max_tries) %>
         publish:
         - count: <% ctx(count) %>
         do: createTrigger
+      - when: <% succeeded() %>
   createTrigger:
     action: core.inject_trigger
       input:

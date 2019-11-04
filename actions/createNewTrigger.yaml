@@ -18,3 +18,6 @@ parameters:
   data:
     required: true
     type: object
+  max_tries:
+    required: true
+    type: number
