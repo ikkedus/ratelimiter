@@ -12,6 +12,7 @@ parameters:
   action:
     required: true
     type: string
-  date:
+  time:
     required: true
-    type: string
+    type: number
+    description: "time units 100 is a a hour, 1000 is 10 hours"
