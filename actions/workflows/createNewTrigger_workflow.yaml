@@ -15,9 +15,9 @@ tasks:
       service_desc: <% ctx(service_desc) %>
       time: <% ctx(time) %>
     next:
-      - when: <% succeeded() and result().count < ctx(max_tries) %>
+      - when: <% succeeded() and result().output.count < ctx(max_tries) %>
         publish:
-        - count: <% result(count) %>
+        - count: <% result().output.count %>
         do: addExecution
       - when: <% succeeded() %>
   addExecution:
