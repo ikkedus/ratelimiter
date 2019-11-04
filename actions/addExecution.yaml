@@ -13,5 +13,5 @@ parameters:
     required: true
     type: string
   data:
-    required: false
+    required: true
     type: object
