@@ -30,11 +30,11 @@ tasks:
         do: createTrigger
   createTrigger:
     action: core.inject_trigger
-      input:
-        trigger: ratelimiter.ratelimited
-      payload:
-        data: <% ctx(data) %>
-        count: <% ctx(count) %>
+    input:
+      trigger: ratelimiter.ratelimited
+    payload:
+      data: <% ctx(data) %>
+      count: <% ctx(count) %>
     next:
       - when: <% succeeded() %>
       - when: <% failed() %>
