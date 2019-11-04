@@ -13,7 +13,7 @@ tasks:
     input:
       username: lordcommander
       connection: mysql
-      query: select count(*) as executions FROM executions WHERE service_desc = '<% ctx(service_desc) %>' AND hostname = '<% ctx(host) %>' AND executiontime BETWEEN NOW() - <% ctx(date) %> and NOW()
+      query: select count(*) as executions FROM executions WHERE service_desc = '<% ctx(service_desc) %>' AND hostname = '<% ctx(host) %>' AND executiontime BETWEEN NOW() - <% ctx(time) %> and NOW()
     next:
       - when: <% succeeded() %>
         publish:
