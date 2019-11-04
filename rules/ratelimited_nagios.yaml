@@ -2,6 +2,7 @@
 name: "rate limited - example"
 pack: ratelimiter
 description: "this makes a trigger with a data object with a number of triggers, also you can define a maximum number of triggers"
+enabled: true
 
 trigger:
   type: "magicarp.service_state_change"
