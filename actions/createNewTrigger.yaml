@@ -12,9 +12,9 @@ parameters:
   service_desc:
     required: true
     type: string
-  date:
+  time:
     required: true
-    type: string
+    type: number
   data:
     required: true
     type: object
