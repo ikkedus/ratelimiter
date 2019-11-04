@@ -1,0 +1,18 @@
+---
+name: "rate limited - example"
+pack: ratelimiter
+description: "this makes a trigger with a data object with a number of triggers, also you can define a maximum number of triggers"
+
+trigger:
+  type: "magicarp.service_state_change"
+
+criteria:
+
+action:
+  ref: "ratelimiter.createNewTrigger"
+  parameters:
+    data: "{{trigger.data}}"
+    host: "{{trigger.hostname}}"
+    max_tries: 3
+    service_desc: "{{trigger.servicedesc}}"
+    time: "24000"
