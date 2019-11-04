@@ -1,0 +1,25 @@
+version: 1.0
+description: This gets the nunber of executions of a action on a host.
+
+input:
+  - host
+  - service_desc
+  - date
+vars:
+  - number: 0
+tasks:
+  getNumberOfExecutions:
+    action: sql.query
+    input:
+      username: lordcommander
+      connection: mysql
+      query: select count(*) as executions FROM executions WHERE service_desc = '<% ctx(action) %>' AND hostname = '<% ctx(host) %>' AND executiontime BETWEEN <% ctx(date) %> and NOW()
+    next:
+      - when: <% succeeded() %>
+        publish:
+        - count: <% ctx(executions) %>
+      - when: <% failed() %>
+        do: 
+         - fail
+output:
+  - count: <% ctx(count) %>

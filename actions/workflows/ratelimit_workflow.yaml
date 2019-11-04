@@ -1,0 +1,31 @@
+version: 1.0
+description: this creates triggers if rules and combines number of executions with the data object
+
+input:
+  - host
+  - service_desc
+  - date
+  - data
+
+tasks:
+  getExecutions:
+    action: ratelimiter.getNumberOfExecutions
+    input:
+      host: <% ctx (host) %>
+      service_desc: <% ctx (service_desc) %>
+    next:
+      - when: <% succeeded() %>
+        publish:
+        - count: <% ctx(count) %>
+        do: createTrigger
+  createTrigger:
+    action: core.inject_trigger
+      input:
+        trigger: ratelimiter.ratelimited
+      payload:
+        data: <% ctx(data) %>
+        count: <% ctx(count) %>
+    next:
+      - when: <% succeeded() %>
+      - when: <% failed() %>
+

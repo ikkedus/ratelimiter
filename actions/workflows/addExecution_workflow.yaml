@@ -1,0 +1,32 @@
+version: 1.0
+description: This gets the nunber of executions of a action on a host.
+
+input:
+  - host
+  - service_desc
+  - data
+tasks:
+  getNumberOfExecutions:
+    action: sql.insert
+    input:
+      connection: mysql
+      username: lordcommander
+      table: executions
+      data:
+        hostname: '<% ctx(host) %>'
+        service_desc: '<% ctx(service_desc) %>'
+        data: '<% ctx(data) %>'
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+      - when: <% failed() %>
+        publish:
+          - stdout: <% result().stdout %>
+          - stderr: <% result().stderr %>
+        do: 
+         - fail
+output:
+  - stdout: <% ctx(stdout) %>
+  - stderr: <% ctx(stderr) %>

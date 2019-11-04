@@ -1,0 +1,17 @@
+---
+name: "addExecution"
+pack: ratelimit
+description: "this adds a execution to the executions table"
+runner_type: orquesta
+entry_point: workflows/addExecution_workflow.yaml
+enabled: true
+parameters:
+  host:
+    required: true
+    type: string
+  service_desc:
+    required: true
+    type: string
+  data:
+    required: false
+    type: object
