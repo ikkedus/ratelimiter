@@ -17,8 +17,17 @@ tasks:
       - when: <% succeeded() and result().count < ctx(max_tries) %>
         publish:
         - count: <% ctx(count) %>
-        do: createTrigger
+        do: addExecution
       - when: <% succeeded() %>
+  addExecution:
+    action: ratelimiter.addExecution
+    input:
+      host: <% ctx(host) %>
+      service_desc: <% ctx(service_desc) %>
+      data: <% ctx(data) %>
+    next:
+      - when: <% succeded() %>
+        do: createTrigger
   createTrigger:
     action: core.inject_trigger
       input:
