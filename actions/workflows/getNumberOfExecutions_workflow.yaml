@@ -22,4 +22,4 @@ tasks:
         do: 
          - fail
 output:
-  - count: <% ctx(count[0]) %>
+  - count: <% ctx(count) %>
